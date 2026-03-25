@@ -1,0 +1,19 @@
+---
+// src/components/Ticker.astro
+// Edit keywords here — they loop infinitely
+const items = [
+  'Cloud Engineer', 'AI Operations', 'Automated Pipelines',
+  'Docker & AWS', 'SysAdmin', 'GCC 2026',
+  'Python · Bash · Linux', 'Reliable Systems',
+];
+// Duplicate for seamless loop
+const all = [...items, ...items];
+---
+
+<div class="ticker">
+  <div class="ticker-track">
+    {all.map(item => (
+      <span class="ti"><b>✦</b>{item}</span>
+    ))}
+  </div>
+</div>

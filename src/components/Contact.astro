@@ -1,0 +1,116 @@
+---
+// src/components/Contact.astro
+// Edit contact cards and location tags here
+const locationTags = ['UAE', 'Saudi Arabia', 'Qatar', 'Available 2026', 'Remote-Friendly'];
+
+const cards = [
+  {
+    label: 'Send a message',
+    name:  'Email',
+    href:  '#email', // obfuscated via JS
+    isEmail: true,
+    icon: `<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7L12 13 2 7"/>`,
+  },
+  {
+    label: 'Connect with me',
+    name:  'LinkedIn',
+    href:  'https://www.linkedin.com/in/muathaf/',
+    icon: `<path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>`,
+  },
+  {
+    label: 'See my code',
+    name:  'GitHub',
+    href:  'https://github.com/muathaf',
+    icon: `<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>`,
+  },
+];
+---
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-layout">
+      <div data-reveal="left">
+        <h2 class="contact-heading">Let's<br><em>Work</em><br>Together.</h2>
+        <p class="contact-sub">Actively seeking Cloud, Junior DevOps, and AI Engineering roles in the GCC. UAE, Saudi Arabia, and Qatar. Available from mid-2026. Open to remote-first with GCC companies.</p>
+        <div class="c-tags">
+          {locationTags.map(t => <span class="c-tag">{t}</span>)}
+        </div>
+      </div>
+      <div class="cc-grid" data-reveal>
+        {cards.map(c => (
+          <a
+            href={c.isEmail ? '#' : c.href}
+            onclick={c.isEmail ? "window.location.href='mai'+'lto:'+'muathaf.it'+'@'+'gmail.com';return false;" : undefined}
+            target={c.isEmail ? undefined : '_blank'}
+            rel={c.isEmail ? undefined : 'noopener'}
+            class="cc"
+          >
+            <div class="cc-top-sweep"></div>
+            <div class="cc-radial"></div>
+            <div class="cc-row">
+              <div class="cc-ico">
+                <svg viewBox="0 0 24 24" set:html={c.icon}></svg>
+              </div>
+              <span class="cc-arrow">&#8599;</span>
+            </div>
+            <div class="cc-info">
+              <div class="cc-lbl">{c.label}</div>
+              <div class="cc-name">{c.name}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+#contact        { background: var(--bg1); border-top: 1px solid var(--rule); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
+.contact-heading {
+  font-family: var(--ff-d); font-size: clamp(3.2rem,5.8vw,5.8rem);
+  font-weight: 800; line-height: .86; letter-spacing: -.045em; color: var(--text); margin-bottom: 2rem;
+}
+.contact-heading em { font-style: normal; color: var(--blue); }
+.contact-sub   { font-size: 1rem; color: var(--mid); line-height: 1.88; margin-bottom: 2rem; }
+.c-tags        { display: flex; flex-wrap: wrap; gap: .45rem; }
+.c-tag         { font-family: var(--ff-m); font-size: .65rem; padding: .28rem .8rem; border: 1px solid var(--bline); color: var(--blue); letter-spacing: .07em; }
+
+.cc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .85rem; }
+.cc {
+  text-decoration: none; background: var(--bg2); border: 1px solid var(--rule);
+  padding: 2rem; display: flex; flex-direction: column; gap: 1.6rem;
+  position: relative; overflow: hidden; transition: all .35s var(--ease);
+}
+.cc-top-sweep {
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease);
+}
+.cc-radial {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 50% 115%, rgba(56,189,248,.14), transparent 60%);
+  opacity: 0; transition: opacity .35s;
+}
+.cc:hover { border-color: var(--blue); transform: translateY(-7px); box-shadow: 0 20px 48px rgba(56,189,248,.12); }
+.cc:hover .cc-top-sweep { transform: scaleX(1); }
+.cc:hover .cc-radial    { opacity: 1; }
+.cc-row   { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+.cc-ico   { width: 46px; height: 46px; background: var(--dim); border: 1px solid var(--bline); display: flex; align-items: center; justify-content: center; transition: all .3s; }
+.cc:hover .cc-ico { background: var(--blue); border-color: var(--blue); }
+.cc-ico svg { width: 20px; height: 20px; fill: none; stroke: var(--blue); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
+.cc:hover .cc-ico svg { stroke: var(--bg); }
+.cc-arrow { font-size: 1.25rem; color: var(--muted); transition: all .3s; position: relative; z-index: 1; }
+.cc:hover .cc-arrow { color: var(--blue); transform: translate(5px,-5px); }
+.cc-info  { position: relative; z-index: 1; }
+.cc-lbl   { font-family: var(--ff-m); font-size: .65rem; color: var(--muted); letter-spacing: .13em; text-transform: uppercase; margin-bottom: .4rem; }
+.cc-name  { font-family: var(--ff-d); font-size: 1.25rem; font-weight: 700; color: var(--text); transition: color .3s; }
+.cc:hover .cc-name { color: var(--blue2); }
+
+@media(max-width:1080px) and (min-width:641px) { .contact-layout { grid-template-columns: 1fr; gap: 3.5rem; } }
+@media(max-width:640px) {
+  .contact-layout  { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cc-grid         { grid-template-columns: 1fr; }
+  .contact-heading { font-size: 2.8rem; }
+}
+</style>

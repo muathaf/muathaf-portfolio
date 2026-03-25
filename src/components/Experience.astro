@@ -1,0 +1,82 @@
+---
+// src/components/Experience.astro
+// Add/edit jobs here
+const jobs = [
+  {
+    period: '2023 – 2024',
+    type:   'Contract · USA',
+    role:   'Linux System Admin Support',
+    company:'Freelance / Contract',
+    desc:   'Supported Linux server environments across multiple machines. Handled monitoring, incident triage, Bash automation, and system maintenance. Built scripts for log analysis and alerting used in real production environments.',
+  },
+  {
+    period: '2022 – 2025',
+    type:   'Freelance · USA',
+    role:   'IT & E-commerce Operations',
+    company:'Remote Gigs',
+    desc:   'Managed digital storefronts, inventory systems, and operations support for small businesses. Built and maintained web presences, handled data reporting and tech support across multiple clients simultaneously.',
+  },
+  {
+    period: '2021 – 2022',
+    type:   'Full Time · USA',
+    role:   'Operations & Coordinator',
+    company:'Commercial Operations',
+    desc:   'Self-funded dual master\'s degrees through operational and cash management roles. Developed reliability, composure under pressure, and cross-functional support skills that translate directly into production engineering.',
+  },
+];
+---
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="sec-tag">04</span>
+      <h2 class="sec-title" data-splitting>Experience</h2>
+      <div class="sec-divider"></div>
+    </div>
+    <div class="timeline">
+      {jobs.map(j => (
+        <div class="tl" data-reveal>
+          <div class="tl-dot"></div>
+          <div class="tl-when">
+            <div class="tl-period">{j.period}</div>
+            <div class="tl-type">{j.type}</div>
+          </div>
+          <div>
+            <div class="tl-role">{j.role}</div>
+            <div class="tl-co">{j.company}</div>
+            <div class="tl-desc">{j.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+#experience  { background: var(--bg); border-top: 1px solid var(--rule); }
+.timeline    { position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, var(--blue) 0%, rgba(56,189,248,.08) 85%, transparent 100%);
+}
+.tl {
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 4rem; padding: 3.2rem 0 3.2rem 3rem;
+  border-bottom: 1px solid var(--rule); position: relative;
+}
+.tl-dot {
+  position: absolute; left: -.45rem; top: 3.6rem;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 1.5px solid var(--blue);
+  transition: background .25s, box-shadow .25s;
+}
+.tl:hover .tl-dot { background: var(--blue); box-shadow: 0 0 12px rgba(56,189,248,.5); }
+.tl-period { font-family: var(--ff-m); font-size: .76rem; color: var(--blue); letter-spacing: .06em; margin-bottom: .3rem; }
+.tl-type   { font-family: var(--ff-m); font-size: .65rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.tl-role   { font-family: var(--ff-d); font-size: 1.35rem; font-weight: 700; color: var(--text); margin-bottom: .22rem; }
+.tl-co     { font-family: var(--ff-m); font-size: .8rem; color: var(--blue); margin-bottom: .85rem; }
+.tl-desc   { font-size: .97rem; color: var(--mid); line-height: 1.88; }
+
+@media(max-width:1080px) and (min-width:641px) { .tl { grid-template-columns: 130px 1fr; gap: 2.5rem; } }
+@media(max-width:640px)                         { .tl { grid-template-columns: 1fr; gap: .4rem; padding: 2rem 0 2rem 2.2rem; } }
+</style>

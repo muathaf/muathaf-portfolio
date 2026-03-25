@@ -1,0 +1,84 @@
+---
+// src/components/Nav.astro
+// Edit navLinks to add/remove nav items
+const navLinks = [
+  { href: '#about',      label: 'About'      },
+  { href: '#skills',     label: 'Skills'     },
+  { href: '#projects',   label: 'Projects'   },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact',    label: 'Contact'    },
+];
+---
+
+<nav id="nav">
+  <a href="#hero" class="logo-link" aria-label="Home">
+    <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+      <path d="M13 2h16l11 11v16l-11 11H13L2 29V13L13 2Z" stroke="#38bdf8" stroke-width="1.2" fill="none"/>
+      <path d="M14.5 5.5h13l9 9v13l-9 9h-13l-9-9v-13l9-9Z" stroke="#38bdf8" stroke-width="0.4" fill="none" opacity="0.25"/>
+      <path d="M12 29V13l9 9 9-9v16" stroke="#edf2ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="13" cy="2"  r="1.2" fill="#38bdf8" opacity="0.7"/>
+      <circle cx="29" cy="2"  r="1.2" fill="#38bdf8" opacity="0.7"/>
+      <circle cx="2"  cy="13" r="1"   fill="#38bdf8" opacity="0.5"/>
+      <circle cx="2"  cy="29" r="1"   fill="#38bdf8" opacity="0.5"/>
+      <circle cx="40" cy="13" r="1"   fill="#38bdf8" opacity="0.5"/>
+      <circle cx="40" cy="29" r="1"   fill="#38bdf8" opacity="0.5"/>
+      <circle cx="13" cy="40" r="1.2" fill="#38bdf8" opacity="0.5"/>
+      <circle cx="29" cy="40" r="1.2" fill="#38bdf8" opacity="0.5"/>
+      <line x1="2"  y1="21" x2="7"  y2="21" stroke="#38bdf8" stroke-width="1" opacity="0.4"/>
+      <line x1="35" y1="21" x2="40" y2="21" stroke="#38bdf8" stroke-width="1" opacity="0.4"/>
+    </svg>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links" role="list">
+      {navLinks.map(link => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+    <div class="nav-badge">
+      <span class="pulse"></span>Open to GCC Roles
+    </div>
+  </div>
+</nav>
+
+<style>
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem 5vw;
+  background: rgba(5,8,16,.82);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--rule);
+  transition: padding .4s var(--ease), background .4s;
+}
+#nav.scrolled { padding: .9rem 5vw; background: rgba(5,8,16,.95); }
+.logo-link { text-decoration: none; display: flex; align-items: center; }
+.nav-links  { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--ff-m); font-size: .72rem; color: var(--muted);
+  text-decoration: none; letter-spacing: .14em; text-transform: uppercase;
+  transition: color .25s; position: relative; padding-bottom: 2px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 1px; background: var(--blue); transition: width .3s var(--ease);
+}
+.nav-links a:hover               { color: var(--blue); }
+.nav-links a:hover::after,
+.nav-links a.active::after       { width: 100%; }
+.nav-links a.active              { color: var(--blue); }
+.nav-right  { display: flex; align-items: center; gap: 1.5rem; }
+.nav-badge  {
+  display: flex; align-items: center; gap: .5rem;
+  font-family: var(--ff-m); font-size: .68rem; color: var(--blue);
+  background: var(--dim); border: 1px solid var(--bline);
+  padding: .3rem 1rem; letter-spacing: .08em;
+}
+.pulse {
+  width: 5px; height: 5px; background: var(--blue); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@media(max-width:640px) {
+  .nav-links { display: none; }
+  #nav       { padding: 1rem 5vw; }
+}
+</style>

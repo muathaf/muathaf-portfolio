@@ -1,0 +1,171 @@
+/* ═══════════════════════════════════════════
+   MUATHAF PORTFOLIO — Global Styles
+   Edit :root to change colors, fonts, spacing
+═══════════════════════════════════════════ */
+
+/* ── DESIGN TOKENS — edit these to restyle everything ── */
+:root {
+  --bg:    #050810;
+  --bg1:   #07091a;
+  --bg2:   #090c1e;
+  --bg3:   #0c1025;
+  --blue:  #38bdf8;
+  --blue2: #7dd3fc;
+  --blue3: #0ea5e9;
+  --glow:  rgba(56,189,248,0.12);
+  --bline: rgba(56,189,248,0.2);
+  --dim:   rgba(56,189,248,0.07);
+  --dimb:  rgba(56,189,248,0.14);
+  --text:  #edf2ff;
+  --mid:   #8fa8c4;
+  --muted: #3a516a;
+  --rule:  rgba(255,255,255,0.055);
+  --rule2: rgba(255,255,255,0.03);
+  --ff-d:  'Syne', 'Trebuchet MS', sans-serif;
+  --ff-m:  'DM Mono', 'Courier New', monospace;
+  --ff-b:  'DM Sans', 'Segoe UI', system-ui, sans-serif;
+  --ease:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: auto; }
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 90% -5%,  rgba(56,189,248,.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at  0% 80%,  rgba(56,189,248,.05) 0%, transparent 45%);
+  color: var(--text);
+  font-family: var(--ff-b);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+a, button { cursor: none; }
+img, svg  { display: block; }
+
+/* ── CUSTOM CURSOR ── */
+#c-dot {
+  position: fixed; z-index: 9999; top: 0; left: 0;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--blue); pointer-events: none;
+  transform: translate(-50%,-50%);
+  transition: width .2s var(--ease), height .2s var(--ease);
+  will-change: transform;
+}
+#c-ring {
+  position: fixed; z-index: 9998; top: 0; left: 0;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(56,189,248,.45); pointer-events: none;
+  transform: translate(-50%,-50%);
+  transition: width .35s var(--ease), height .35s var(--ease), border-color .3s;
+  will-change: transform;
+}
+body.cur-hover #c-dot  { width: 12px; height: 12px; background: var(--blue2); }
+body.cur-hover #c-ring { width: 52px;  height: 52px;  border-color: var(--blue); }
+body.cur-click #c-dot  { width: 8px;  height: 8px; }
+body.cur-click #c-ring { width: 28px; height: 28px; }
+
+/* ── SECTION SHELL ── */
+section { position: relative; z-index: 1; }
+.wrap   { padding: 8rem 5vw; }
+
+.sec-head {
+  display: flex; align-items: center; gap: 1.5rem; margin-bottom: 5rem;
+}
+.sec-tag {
+  font-family: var(--ff-m); font-size: .68rem; color: var(--blue);
+  background: var(--dim); border: 1px solid var(--bline);
+  padding: .28rem .85rem; letter-spacing: .1em; flex-shrink: 0;
+}
+.sec-title {
+  font-family: var(--ff-d); font-size: clamp(2.2rem,4vw,3.4rem);
+  font-weight: 800; letter-spacing: -.035em; line-height: 1; color: var(--text);
+  overflow: hidden;
+}
+.sec-title .char { display: inline-block; will-change: transform, opacity; }
+.sec-divider {
+  flex: 1; height: 1px; background: var(--rule); max-width: 300px;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .9s .15s var(--ease);
+}
+.sec-divider.go { transform: scaleX(1); }
+
+/* ── BUTTONS ── */
+.btn-p {
+  font-family: var(--ff-m); font-size: .73rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+  padding: .92rem 2rem; background: var(--blue); color: var(--bg);
+  display: inline-block; position: relative; overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.btn-p::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,.2);
+  transform: translateX(-101%); transition: transform .35s var(--ease);
+}
+.btn-p:hover::before  { transform: translateX(0); }
+.btn-p:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(56,189,248,.3); }
+
+.btn-s {
+  font-family: var(--ff-m); font-size: .73rem; letter-spacing: .1em;
+  text-transform: uppercase; text-decoration: none; padding: .92rem 2rem;
+  background: transparent; color: var(--mid); border: 1px solid var(--rule);
+  display: inline-block; transition: border-color .25s, color .25s;
+}
+.btn-s:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ── PILLS & TAGS ── */
+.pills { display: flex; flex-wrap: wrap; gap: .45rem; }
+.pill  {
+  font-family: var(--ff-m); font-size: .7rem; padding: .3rem .75rem;
+  background: var(--bg2); color: var(--mid); border: 1px solid var(--rule);
+  transition: all .22s;
+}
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.tag  {
+  font-family: var(--ff-m); font-size: .68rem; padding: .22rem .6rem;
+  background: var(--bg3); color: var(--muted); border: 1px solid var(--rule);
+  transition: all .22s;
+}
+
+/* ── SCROLL REVEAL ── */
+[data-reveal] {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+[data-reveal="left"] { transform: translateX(-28px); }
+[data-reveal].visible { opacity: 1; transform: none; }
+
+/* ── MARQUEE ── */
+.ticker {
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  background: var(--bg1); overflow: hidden; padding: .85rem 0;
+}
+.ticker-track {
+  display: flex; white-space: nowrap;
+  animation: tick 35s linear infinite; will-change: transform;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ti {
+  font-family: var(--ff-m); font-size: .72rem; color: var(--muted);
+  letter-spacing: .18em; text-transform: uppercase; padding: 0 3rem;
+  transition: color .2s;
+}
+.ti:hover { color: var(--blue); }
+.ti b     { color: var(--blue); margin-right: .5rem; }
+@keyframes tick { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+@keyframes pulse{ 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.3;transform:scale(.8);} }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1080px) and (min-width:641px) {
+  .wrap { padding: 5.5rem 5vw; }
+}
+@media(max-width:640px) {
+  body { cursor: auto; }
+  #c-dot, #c-ring { display: none; }
+  a, button { cursor: pointer; }
+  .wrap { padding: 3.5rem 5vw; }
+  .sec-title { font-size: 1.9rem; }
+}
