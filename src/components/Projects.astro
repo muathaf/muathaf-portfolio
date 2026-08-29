@@ -6,6 +6,16 @@ const projects = [
   {
     num: '01',
     status: 'live',
+    githubUrl: 'https://github.com/muathaf/gitops-k8s-capstone',
+    title: 'Enterprise GitOps & K8s Architecture',
+    desc: 'Architected a highly available microservice deployment. Provisioned AWS EKS infrastructure using Terraform, orchestrated containers with Kubernetes, and automated the CI/CD build pipeline using GitHub Actions.',
+    tags: ['AWS', 'Terraform', 'Kubernetes', 'Docker', 'CI/CD'],
+    span: 'pj-c',
+    year: '2026',
+  },
+  {
+    num: '02',
+    status: 'live',
     githubUrl: 'https://github.com/muathaf/cloud-deployment-project',
     title: 'Automated Cloud Deployment',
     desc: 'Architecting an automated deployment environment using Docker and AWS EC2 to ensure a highly available system, applying continuous integration principles via GitHub Actions CI/CD pipeline.',
@@ -14,9 +24,9 @@ const projects = [
     year: '2026',
   },
   {
-    num: '02',
+    num: '03',
     status: 'live',
-    githubUrl: 'https://github.com/muathaf/ecommerce-data-pipeline',
+    githubUrl: '',
     title: 'IT & E-Commerce Operations',
     desc: 'Managed digital storefronts, inventory systems, and core web technologies for commercial operations, ensuring robust data management and uptime.',
     tags: ['Shopify', 'Python', 'Data Management'],
@@ -24,7 +34,7 @@ const projects = [
     year: '2022–2025',
   },
   {
-    num: '03',
+    num: '04',
     status: 'live',
     githubUrl: 'https://github.com/muathaf/linux-sysadmin-monitor',
     title: 'Linux SysAdmin Automation',
@@ -53,9 +63,8 @@ const projects = [
                 <div class="pj-num">{p.num}</div>
                 <div class="pj-badges">
                   <span class={p.status === 'live' ? 'badge-live' : 'badge-wip'}>
-                     {p.status === 'live' ? 'Live' : 'In Progress'}
+                    {p.status === 'live' ? 'Live' : 'In Progress'}
                   </span>
-        <span class="badge-year">{p.year}</span>
                   {p.githubUrl && (
                     <a href={p.githubUrl} class="pj-link" target="_blank" rel="noopener" aria-label="GitHub">&#8599;</a>
                   )}
@@ -114,5 +123,4 @@ const projects = [
   .pj-a,.pj-b,.pj-c { grid-column: span 1; }
   .pj-c-grid { grid-template-columns: 1fr; }
 }
-.badge-year { font-family: var(--ff-m); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: .2rem .65rem; background: transparent; color: var(--muted); border: 1px solid var(--rule); }
 </style>
