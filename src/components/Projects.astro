@@ -1,126 +1,62 @@
 ---
 // src/components/Projects.astro
-// Add/edit projects here — status: 'live' | 'wip'
-// githubUrl: set to '' to hide the arrow link
 const projects = [
   {
-    num: '01',
-    status: 'live',
+    num: '01', status: 'live',
     githubUrl: 'https://github.com/muathaf/gitops-k8s-capstone',
     title: 'Enterprise GitOps & K8s Architecture',
     desc: 'Architected a highly available microservice deployment. Provisioned AWS EKS infrastructure using Terraform, orchestrated containers with Kubernetes, and automated the CI/CD build pipeline using GitHub Actions.',
     tags: ['AWS', 'Terraform', 'Kubernetes', 'Docker', 'CI/CD'],
-    span: 'pj-c',
-    year: '2026',
+    span: 'pj-c', year: '2026',
   },
   {
-    num: '02',
-    status: 'live',
+    num: '02', status: 'live',
     githubUrl: 'https://github.com/muathaf/cloud-deployment-project',
     title: 'Automated Cloud Deployment',
     desc: 'Architecting an automated deployment environment using Docker and AWS EC2 to ensure a highly available system, applying continuous integration principles via GitHub Actions CI/CD pipeline.',
     tags: ['AWS EC2', 'Docker', 'Linux', 'GitHub Actions', 'CI/CD'],
-    span: 'pj-a',
-    year: '2026',
+    span: 'pj-a', year: '2026',
   },
   {
-    num: '03',
-    status: 'live',
-    githubUrl: '',
+    num: '03', status: 'live', githubUrl: '',
     title: 'IT & E-Commerce Operations',
     desc: 'Managed digital storefronts, inventory systems, and core web technologies for commercial operations, ensuring robust data management and uptime.',
     tags: ['Shopify', 'Python', 'Data Management'],
-    span: 'pj-b',
-    year: '2022–2025',
+    span: 'pj-b', year: '2022–2025',
   },
   {
-    num: '04',
-    status: 'live',
+    num: '04', status: 'live',
     githubUrl: 'https://github.com/muathaf/linux-sysadmin-monitor',
     title: 'Linux SysAdmin Automation',
     desc: 'Hands-on Linux system administration — log analysis, server monitoring, and automated incident response scripts built and used in real production environments.',
     tags: ['Python', 'Bash', 'Linux', 'Cron', 'Nginx'],
-    span: 'pj-c',
-    year: '2023–2024',
+    span: 'pj-c', year: '2023–2024',
   },
 ];
 ---
 
-<section id="projects">
+<section id="projects" class="section">
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <span class="sec-tag">03</span>
       <h2 class="sec-title" data-splitting>Projects</h2>
       <div class="sec-divider"></div>
     </div>
+
     <div class="bento">
-      {projects.map((p, i) => (
-        <div class={`pj ${p.span}`} data-reveal>
+      {projects.map((pj) => (
+        <div class={`pj ${pj.span}`} data-reveal>
           <div class="pj-shine"></div>
-          <div class={p.span === 'pj-c' ? 'pj-c-grid' : ''}>
+          <div class="pj-c-grid">
             <div>
               <div class="pj-top">
-                <div class="pj-num">{p.num}</div>
+                <div class="pj-num">{pj.num}</div>
                 <div class="pj-badges">
-                  <span class={p.status === 'live' ? 'badge-live' : 'badge-wip'}>
-                    {p.status === 'live' ? 'Live' : 'In Progress'}
-                  </span>
-                  {p.githubUrl && (
-                    <a href={p.githubUrl} class="pj-link" target="_blank" rel="noopener" aria-label="GitHub">&#8599;</a>
+                  <span class="badge-live">Live</span>
+                  {pj.githubUrl && (
+                    <a href={pj.githubUrl} class="pj-link" target="_blank" rel="noopener" aria-label="GitHub">↗</a>
                   )}
                 </div>
               </div>
-              <div class="pj-title">{p.title}</div>
+              <div class="pj-title">{pj.title}</div>
             </div>
-            <div>
-              <div class="pj-desc">{p.desc}</div>
-              <div class="tags">
-                {p.tags.map(t => <span class="tag">{t}</span>)}
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<style>
-#projects { background: var(--bg1); border-top: 1px solid var(--rule); }
-.bento    { display: grid; grid-template-columns: repeat(12,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-.pj       { background: var(--bg2); padding: 2.6rem; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: background .3s; }
-.pj:hover { background: var(--bg3); }
-.pj-a     { grid-column: span 7; }
-.pj-b     { grid-column: span 5; }
-.pj-c     { grid-column: span 12; }
-.pj-shine {
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(56,189,248,.07), transparent 55%);
-  opacity: 0; transition: opacity .35s;
-}
-.pj:hover .pj-shine { opacity: 1; }
-.pj-c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-.pj-top    { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.8rem; }
-.pj-num    { font-family: var(--ff-d); font-size: 4.5rem; font-weight: 800; color: rgba(56,189,248,.15); line-height: 1; transition: color .3s; letter-spacing: -.04em; }
-.pj:hover .pj-num { color: rgba(56,189,248,.35); }
-.pj-badges { display: flex; flex-direction: column; align-items: flex-end; gap: .5rem; }
-.badge-live { font-family: var(--ff-m); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: .2rem .65rem; background: rgba(56,189,248,.1); color: var(--blue); border: 1px solid var(--bline); }
-.badge-wip  { font-family: var(--ff-m); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: .2rem .65rem; background: rgba(58,81,106,.12); color: var(--muted); border: 1px solid var(--rule); }
-.pj-link    { width: 32px; height: 32px; border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; color: var(--muted); text-decoration: none; font-size: .9rem; transition: all .22s; flex-shrink: 0; }
-.pj-link:hover { border-color: var(--blue); color: var(--blue); transform: translate(2px,-2px); }
-.pj-title   { font-family: var(--ff-d); font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: .75rem; letter-spacing: -.02em; transition: color .25s; }
-.pj:hover .pj-title { color: var(--blue2); }
-.pj-desc    { font-size: .95rem; color: var(--mid); line-height: 1.82; flex: 1; margin-bottom: 1.6rem; }
-.pj:hover .tag { color: var(--blue); border-color: var(--bline); background: var(--dim); }
-
-@media(max-width:1080px) and (min-width:641px) {
-  .bento { grid-template-columns: 1fr 1fr; }
-  .pj-a,.pj-b,.pj-c { grid-column: span 2; }
-  .pj-c-grid { grid-template-columns: 1fr; }
-}
-@media(max-width:640px) {
-  .bento { grid-template-columns: 1fr; }
-  .pj-a,.pj-b,.pj-c { grid-column: span 1; }
-  .pj-c-grid { grid-template-columns: 1fr; }
-}
-</style>
