@@ -42,21 +42,3 @@ const projects = [
       <h2 class="sec-title" data-splitting>Projects</h2>
       <div class="sec-divider"></div>
     </div>
-
-    <div class="bento">
-      {projects.map((pj) => (
-        <div class={`pj ${pj.span}`} data-reveal>
-          <div class="pj-shine"></div>
-          <div class="pj-c-grid">
-            <div>
-              <div class="pj-top">
-                <div class="pj-num">{pj.num}</div>
-                <div class="pj-badges">
-                  <span class="badge-live">Live</span>
-                  {pj.githubUrl && (
-                    <a href={pj.githubUrl} class="pj-link" target="_blank" rel="noopener" aria-label="GitHub">↗</a>
-                  )}
-                </div>
-              </div>
-              <div class="pj-title">{pj.title}</div>
-            </div>
