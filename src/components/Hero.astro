@@ -22,70 +22,71 @@
 </section>
 <style>
 #hero {
-  padding: 4rem 1.5rem 3rem;
-  min-height: auto;
+  padding: 3rem 1rem 2rem;
   display: flex;
   align-items: center;
   position: relative;
+  min-height: auto;
 }
 
 .wrap {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   width: 100%;
 }
 
 .hero-content {
-  max-width: 680px;
+  max-width: 100%;
   width: 100%;
 }
 
 .hero-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #00d9ff;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   opacity: 0.9;
+  word-break: break-word;
 }
 
 .hero-name {
   font-family: 'Syne', sans-serif;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #f8fafc;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+  line-height: 1;
+  margin-bottom: 1.2rem;
   letter-spacing: -0.03em;
   word-break: break-word;
 }
 
 .hero-desc {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #cbd5e1;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
   max-width: 100%;
 }
 
 .hero-cta {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
 }
 
 .btn-primary {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   background: linear-gradient(135deg, #00d9ff, #0099ff);
   color: #0a0e27;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -100,8 +101,8 @@
 
 .hero-badge {
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  padding: 0.4rem 0.9rem;
+  font-size: 0.65rem;
+  padding: 0.35rem 0.8rem;
   border: 1px solid rgba(0, 217, 255, 0.3);
   border-radius: 20px;
   color: #00d9ff;
@@ -110,39 +111,40 @@
   white-space: nowrap;
 }
 
-/* Tablet */
+/* Tablet 640px+ */
 @media (min-width: 640px) {
   #hero {
-    padding: 5rem 2rem 4rem;
-    min-height: 55vh;
+    padding: 4rem 2rem 3rem;
   }
 
   .wrap {
+    max-width: 900px;
     padding: 0 2rem;
   }
 
   .hero-tag {
-    font-size: 0.85rem;
-    margin-bottom: 1.2rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
   }
 
   .hero-name {
-    font-size: 2.8rem;
-    margin-bottom: 1.8rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-desc {
     font-size: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
   }
 
   .hero-cta {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .btn-primary {
-    padding: 0.8rem 2rem;
-    font-size: 0.95rem;
+    padding: 0.75rem 1.8rem;
+    font-size: 0.9rem;
   }
 
   .hero-badge {
@@ -151,31 +153,53 @@
   }
 }
 
-/* Desktop */
+/* Desktop 1024px+ */
 @media (min-width: 1024px) {
   #hero {
-    padding: 6rem 2rem 4rem;
-    min-height: 60vh;
+    padding: 5rem 2rem 4rem;
+    min-height: 55vh;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    padding: 0 2rem;
   }
 
   .hero-tag {
     font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
   }
 
   .hero-name {
-    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    font-size: 3.5rem;
     margin-bottom: 2rem;
   }
 
   .hero-desc {
-    font-size: 1.05rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
   }
 
   .btn-primary {
     padding: 0.85rem 2rem;
     font-size: 0.95rem;
+  }
+}
+
+/* Large Desktop 1280px+ */
+@media (min-width: 1280px) {
+  .wrap {
+    max-width: 1280px;
+    padding: 0 4rem;
+  }
+
+  .hero-name {
+    font-size: 4rem;
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
   }
 }
 </style>
