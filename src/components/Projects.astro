@@ -7,7 +7,7 @@ const projects = [
     title: 'Enterprise GitOps & K8s Architecture',
     desc: 'Architected a highly available microservice deployment. Provisioned AWS EKS infrastructure using Terraform, orchestrated containers with Kubernetes, and automated the CI/CD build pipeline using GitHub Actions.',
     tags: ['AWS', 'Terraform', 'Kubernetes', 'Docker', 'CI/CD'],
-    span: 'pj-c', year: '2026',
+    year: '2026',
   },
   {
     num: '02', status: 'live',
@@ -15,14 +15,15 @@ const projects = [
     title: 'Automated Cloud Deployment',
     desc: 'Architecting an automated deployment environment using Docker and AWS EC2 to ensure a highly available system, applying continuous integration principles via GitHub Actions CI/CD pipeline.',
     tags: ['AWS EC2', 'Docker', 'Linux', 'GitHub Actions', 'CI/CD'],
-    span: 'pj-a', year: '2026',
+    year: '2026',
   },
   {
-    num: '03', status: 'live', githubUrl: '',
+    num: '03', status: 'live',
+    githubUrl: '',
     title: 'IT & E-Commerce Operations',
     desc: 'Managed digital storefronts, inventory systems, and core web technologies for commercial operations, ensuring robust data management and uptime.',
     tags: ['Shopify', 'Python', 'Data Management'],
-    span: 'pj-b', year: '2022–2025',
+    year: '2022–2025',
   },
   {
     num: '04', status: 'live',
@@ -30,7 +31,7 @@ const projects = [
     title: 'Linux SysAdmin Automation',
     desc: 'Hands-on Linux system administration — log analysis, server monitoring, and automated incident response scripts built and used in real production environments.',
     tags: ['Python', 'Bash', 'Linux', 'Cron', 'Nginx'],
-    span: 'pj-c', year: '2023–2024',
+    year: '2023–2024',
   },
 ];
 ---
@@ -39,6 +40,202 @@ const projects = [
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <span class="sec-tag">03</span>
-      <h2 class="sec-title" data-splitting>Projects</h2>
+      <h2 class="sec-title">Projects</h2>
       <div class="sec-divider"></div>
     </div>
+
+    <div class="projects-grid">
+      {projects.map((pj) => (
+        <div class="project-card" data-reveal>
+          <div class="pj-header">
+            <span class="pj-num">{pj.num}</span>
+            <span class="pj-live">Live</span>
+          </div>
+          
+          <h3 class="pj-title">{pj.title}</h3>
+          <p class="pj-desc">{pj.desc}</p>
+          
+          <div class="pj-footer">
+            <div class="pj-tags">
+              {pj.tags.map(tag => <span class="tag">{tag}</span>)}
+            </div>
+            {pj.githubUrl && (
+              <a href={pj.githubUrl} target="_blank" class="pj-link">GitHub ↗</a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+#projects {
+  padding: 8rem 2rem;
+  position: relative;
+}
+
+#projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.15), transparent);
+}
+
+.sec-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.sec-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #00d9ff;
+  letter-spacing: 0.1em;
+}
+
+.sec-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.sec-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 217, 255, 0.3), transparent);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  border: 1px solid rgba(0, 217, 255, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+  border-color: rgba(0, 217, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 40px rgba(0, 217, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.pj-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.pj-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgba(0, 217, 255, 0.4);
+}
+
+.pj-live {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  padding: 0.35rem 0.7rem;
+  background: rgba(0, 217, 255, 0.15);
+  color: #00d9ff;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pj-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 1rem;
+  font-family: 'Syne', sans-serif;
+}
+
+.pj-desc {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.pj-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.pj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.7rem;
+  background: rgba(0, 217, 255, 0.1);
+  color: #00d9ff;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  white-space: nowrap;
+}
+
+.pj-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: #00d9ff;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.pj-link:hover {
+  color: #0099ff;
+  transform: translateX(2px);
+}
+
+@media (max-width: 768px) {
+  #projects {
+    padding: 5rem 1.5rem;
+  }
+
+  .sec-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .sec-divider {
+    width: 60px;
+  }
+
+  .sec-title {
+    font-size: 2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
