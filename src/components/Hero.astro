@@ -3,53 +3,43 @@
 ---
 
 <section id="hero">
-  <div class="wrap">
-    <div class="hero-content">
-      <div class="hero-tag">Cloud Infrastructure Engineer</div>
-      
-      <h1 class="hero-name">MUATHAF</h1>
-      
-      <p class="hero-desc">
-        Dual master's degrees in Information Technology and Artificial Intelligence. I build and maintain cloud infrastructure that works in production. AWS, Terraform, Kubernetes, Linux, Python, CI/CD.
-      </p>
+  <div class="hero-inner">
+    <div class="hero-tag">Cloud Infrastructure Engineer</div>
+    
+    <h1 class="hero-name">MUATHAF</h1>
+    
+    <p class="hero-desc">
+      Dual master's degrees in Information Technology and Artificial Intelligence. I build and maintain cloud infrastructure that works in production. AWS, Terraform, Kubernetes, Linux, Python, CI/CD.
+    </p>
 
-      <div class="hero-cta">
-        <a href="#projects" class="btn-primary">View My Work</a>
-        <div class="hero-badge">Open to Relocate Immediately</div>
-      </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <div class="hero-badge">Open to Relocate Immediately</div>
     </div>
   </div>
 </section>
+
 <style>
 #hero {
-  padding: 3rem 1rem 2rem;
+  padding: 3rem 1.5rem 2.5rem;
   display: flex;
   align-items: center;
-  position: relative;
-  min-height: auto;
 }
 
-.wrap {
-  max-width: 100%;
+.hero-inner {
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
-  width: 100%;
-}
-
-.hero-content {
-  max-width: 100%;
-  width: 100%;
 }
 
 .hero-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #00d9ff;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
   opacity: 0.9;
-  word-break: break-word;
 }
 
 .hero-name {
@@ -57,36 +47,35 @@
   font-size: 2rem;
   font-weight: 800;
   color: #f8fafc;
-  line-height: 1;
-  margin-bottom: 1.2rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
   letter-spacing: -0.03em;
-  word-break: break-word;
 }
 
 .hero-desc {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #cbd5e1;
-  line-height: 1.7;
-  margin-bottom: 1.2rem;
-  max-width: 100%;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 650px;
 }
 
 .hero-cta {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .btn-primary {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
+  padding: 0.75rem 1.5rem;
   background: linear-gradient(135deg, #00d9ff, #0099ff);
   color: #0a0e27;
   border: none;
   border-radius: 6px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -101,8 +90,8 @@
 
 .hero-badge {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  padding: 0.35rem 0.8rem;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.9rem;
   border: 1px solid rgba(0, 217, 255, 0.3);
   border-radius: 20px;
   color: #00d9ff;
@@ -111,95 +100,51 @@
   white-space: nowrap;
 }
 
-/* Tablet 640px+ */
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   #hero {
     padding: 4rem 2rem 3rem;
   }
 
-  .wrap {
-    max-width: 900px;
-    padding: 0 2rem;
-  }
-
   .hero-tag {
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .hero-name {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-desc {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    max-width: 600px;
-  }
-
-  .hero-cta {
-    gap: 1rem;
-  }
-
-  .btn-primary {
-    padding: 0.75rem 1.8rem;
-    font-size: 0.9rem;
-  }
-
-  .hero-badge {
-    font-size: 0.75rem;
-    padding: 0.5rem 1rem;
-  }
-}
-
-/* Desktop 1024px+ */
-@media (min-width: 1024px) {
-  #hero {
-    padding: 5rem 2rem 4rem;
-    min-height: 55vh;
-  }
-
-  .wrap {
-    max-width: 1200px;
-    padding: 0 2rem;
-  }
-
-  .hero-tag {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 1.2rem;
   }
 
   .hero-name {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btn-primary {
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    padding: 6rem 3rem 4rem;
+    min-height: 60vh;
+  }
+
+  .hero-name {
+    font-size: 3.8rem;
     margin-bottom: 2rem;
   }
 
   .hero-desc {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
-    max-width: 700px;
-  }
-
-  .btn-primary {
-    padding: 0.85rem 2rem;
-    font-size: 0.95rem;
-  }
-}
-
-/* Large Desktop 1280px+ */
-@media (min-width: 1280px) {
-  .wrap {
-    max-width: 1280px;
-    padding: 0 4rem;
-  }
-
-  .hero-name {
-    font-size: 4rem;
-  }
-
-  .hero-desc {
-    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
   }
 }
 </style>
