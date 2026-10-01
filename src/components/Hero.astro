@@ -1,142 +1,136 @@
 ---
 // src/components/Hero.astro
-// Edit name, tagline, desc, stats here
-const name    = 'MUATHAF';
-const tagline = 'Cloud Infrastructure Engineer Open to Relocate Immediately';
-const desc    = 'Dual master\'s degrees in Information Technology and Artificial Intelligence. I bridge the gap between AI development and reliable cloud infrastructure, ensuring systems are scalable and production-ready.';
-const stats   = [
-  { n: '2', sup: '×', label: "Master's\nDegrees in the US" },
-  { n: '4', sup: '+', label: "Years in\nthe US"  },
-  { n: '3', sup: '+', label: "Years of\nTech Work" },
-];
 ---
 
 <section id="hero">
-  <div class="hero-inner">
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="hero-tag">Cloud Infrastructure Engineer</div>
+      
+      <h1 class="hero-name">MUATHAF</h1>
+      
+      <p class="hero-desc">
+        Dual master's degrees in Information Technology and Artificial Intelligence. I build and maintain cloud infrastructure that works in production. AWS, Terraform, Kubernetes, Linux, Python, CI/CD.
+      </p>
 
-    <div class="hero-eyebrow" id="eyebrow">
-      Cloud Infrastructure Engineer
-      <span class="eyebrow-line" id="eyeline"></span>
-    </div>
-
-    <h1 class="hero-name" data-splitting aria-label={name}>{name}</h1>
-
-    <div class="hero-rule" id="hrule"></div>
-
-    <div class="hero-bottom">
-      <div>
-        <p class="hero-tagline" set:html={tagline}></p>
-        <p class="hero-desc">{desc}</p>
-        <div class="hero-btns">
-          <a href="#projects" class="btn-p">View My Work</a>
-          <a href="#contact"  class="btn-s">Get in Touch</a>
-          <a href="/cv.pdf" download class="btn-s">Download CV</a>
-        </div>
-      </div>
-      <div>
-        <div class="hero-stats">
-          {stats.map(s => (
-            <div class="hs">
-              <div class="hs-glow"></div>
-              <div class="hs-n">{s.n}<em>{s.sup}</em></div>
-              <div class="hs-l" set:html={s.label.replace('\n','<br>')}></div>
-            </div>
-          ))}
-        </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <div class="hero-badge">Open to Relocate Immediately</div>
       </div>
     </div>
-  </div>
-
-  <div class="hero-scroll">
-    <div class="scroll-bar"><div class="scroll-fill"></div></div>
-    Scroll
   </div>
 </section>
 
 <style>
 #hero {
-  min-height: 100vh; display: flex; flex-direction: column;
-  justify-content: flex-end; padding: 9rem 5vw 0;
-  position: relative; z-index: 1;
+  padding: 6rem 2rem 4rem;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
-#hero::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background-image:
-    linear-gradient(var(--rule2) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rule2) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
-  pointer-events: none;
-}
-.hero-inner { position: relative; z-index: 1; }
 
-.hero-eyebrow {
-  font-family: var(--ff-m); font-size: .7rem; color: var(--blue);
-  letter-spacing: .26em; text-transform: uppercase;
-  display: flex; align-items: center; gap: 1rem;
-  margin-bottom: 2.2rem; opacity: 0;
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
 }
-.eyebrow-line {
-  display: inline-block; width: 0; height: 1px;
-  background: var(--blue); vertical-align: middle;
-  transition: width .6s var(--ease);
+
+.hero-content {
+  max-width: 680px;
 }
+
+.hero-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  color: #00d9ff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
 .hero-name {
-  font-family: var(--ff-d);
-  font-size: clamp(2.6rem, 11vw, 17rem);
-  font-weight: 800; line-height: .82;
-  letter-spacing: -.04em; color: var(--text);
-  white-space: nowrap; overflow-x: visible; overflow-y: hidden;
-  margin-bottom: 0;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 3.8rem);
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
 }
-.hero-name .char { display: inline-block; will-change: transform, opacity; }
 
-.hero-rule {
-  width: 0; height: 1px; background: var(--rule);
-  margin: 2.5rem 0; transition: width 1s .8s var(--ease);
+.hero-desc {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
 }
-.hero-rule.go { width: 100%; }
 
-.hero-bottom {
-  display: grid; grid-template-columns: 1fr 500px;
-  gap: 5rem; align-items: end; padding-bottom: 5rem;
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
-.hero-tagline { font-family: var(--ff-d); font-size: 1.45rem; font-weight: 700; color: var(--text); line-height: 1.3; margin-bottom: 1.1rem; }
-.hero-desc    { font-size: 1rem; color: var(--mid); line-height: 1.9; max-width: 480px; margin-bottom: 2.2rem; }
-.hero-btns    { display: flex; gap: .8rem; flex-wrap: wrap; }
 
-.hero-stats { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--rule); background: var(--bg1); overflow: hidden; }
-.hs { padding: 1.8rem 1.4rem; border-right: 1px solid var(--rule); position: relative; overflow: hidden; }
-.hs:last-child { border-right: none; }
-.hs-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, var(--glow), transparent 65%); opacity: 0; transition: opacity .4s; }
-.hs:hover .hs-glow { opacity: 1; }
-.hs::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg,var(--blue),transparent); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease); }
-.hs:hover::before { transform: scaleX(1); }
-.hs-n { font-family: var(--ff-d); font-size: 3rem; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -.04em; margin-bottom: .3rem; position: relative; z-index: 1; }
-.hs-n em { font-style: normal; color: var(--blue); font-size: 1.5rem; }
-.hs-l { font-family: var(--ff-m); font-size: .65rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; line-height: 1.6; position: relative; z-index: 1; }
+.btn-primary {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, #00d9ff, #0099ff);
+  color: #0a0e27;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'DM Sans', sans-serif;
+}
 
-.hero-scroll {
-  position: absolute; bottom: 2.5rem; right: 5vw;
-  display: flex; flex-direction: column; align-items: center; gap: .7rem;
-  font-family: var(--ff-m); font-size: .58rem; color: var(--muted);
-  letter-spacing: .2em; text-transform: uppercase; writing-mode: vertical-rl;
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 217, 255, 0.3);
 }
-.scroll-bar  { width: 1px; height: 48px; background: var(--muted); position: relative; overflow: hidden; }
-.scroll-fill { position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--blue); animation: sf 1.8s ease-in-out infinite; }
-@keyframes sf { 0%{top:-100%;} 100%{top:100%;} }
 
-@media(max-width:1080px) and (min-width:641px) {
-  .hero-bottom { grid-template-columns: 1fr; gap: 3rem; }
-  .hero-stats  { max-width: 480px; }
+.hero-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 20px;
+  color: #00d9ff;
+  background: rgba(0, 217, 255, 0.08);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
-@media(max-width:640px) {
-  #hero         { padding: 7rem 5vw 0; min-height: auto; }
-  .hero-name    { font-size: clamp(2.2rem, 11.2vw, 5.5rem); overflow-x: visible; }
-  .hero-bottom  { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 4rem; }
-  .hero-scroll  { display: none; }
-}
-@media(max-width:400px) {
-  .hero-name { font-size: clamp(1.9rem, 10.5vw, 3rem); }
+
+@media (max-width: 768px) {
+  #hero {
+    padding: 4rem 1.5rem 3rem;
+    min-height: 50vh;
+  }
+
+  .hero-name {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta {
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
 }
 </style>
