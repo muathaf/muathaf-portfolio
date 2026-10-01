@@ -1,13 +1,12 @@
 ---
 // src/components/Contact.astro
-// Edit contact cards and location tags here
 const locationTags = ['Open to Relocate Immediately'];
 
 const cards = [
   {
     label: 'Send a message',
     name:  'Email',
-    href:  '#email', // obfuscated via JS
+    href:  '#email',
     isEmail: true,
     icon: `<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7L12 13 2 7"/>`,
   },
@@ -28,9 +27,15 @@ const cards = [
 
 <section id="contact">
   <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="sec-tag">05</span>
+      <h2 class="sec-title" data-splitting>Contact</h2>
+      <div class="sec-divider"></div>
+    </div>
+
     <div class="contact-layout">
       <div data-reveal="left">
-        <h2 class="contact-heading">Let's<br><em>Work</em><br>Together.</h2>
+        <h3 class="contact-heading">Let's<br><em>Work</em><br>Together.</h3>
         <p class="contact-sub">Open to relocate immediately. Ready for Cloud Infrastructure, DevOps, or Systems Administration roles.</p>
         <div class="c-tags">
           {locationTags.map(t => <span class="c-tag">{t}</span>)}
@@ -65,10 +70,40 @@ const cards = [
 </section>
 
 <style>
-#contact        { background: var(--bg1); border-top: 1px solid var(--rule); }
+#contact { background: var(--bg1); border-top: 1px solid var(--rule); padding: 6rem 2rem; }
+
+.sec-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.sec-tag {
+  font-family: var(--ff-m);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.1em;
+}
+
+.sec-title {
+  font-family: var(--ff-d);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+}
+
+.sec-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--bline), transparent);
+}
+
 .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
 .contact-heading {
-  font-family: var(--ff-d); font-size: clamp(3.2rem,5.8vw,5.8rem);
+  font-family: var(--ff-d); font-size: clamp(2.5rem,5vw,4rem);
   font-weight: 800; line-height: .86; letter-spacing: -.045em; color: var(--text); margin-bottom: 2rem;
 }
 .contact-heading em { font-style: normal; color: var(--blue); }
@@ -109,8 +144,12 @@ const cards = [
 
 @media(max-width:1080px) and (min-width:641px) { .contact-layout { grid-template-columns: 1fr; gap: 3.5rem; } }
 @media(max-width:640px) {
-  .contact-layout  { grid-template-columns: 1fr; gap: 2.5rem; }
-  .cc-grid         { grid-template-columns: 1fr; }
-  .contact-heading { font-size: 2.8rem; }
+  #contact              { padding: 4rem 1.5rem; }
+  .sec-head            { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .sec-divider         { width: 60px; }
+  .sec-title           { font-size: 2rem; }
+  .contact-layout      { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cc-grid             { grid-template-columns: 1fr; }
+  .contact-heading     { font-size: 2rem; }
 }
 </style>

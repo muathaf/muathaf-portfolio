@@ -1,6 +1,5 @@
 ---
 // src/components/About.astro
-// About section with education
 const degrees = [
   { deg: 'MS · Artificial Intelligence',  school: 'University of the Cumberlands · USA', year: '2024–2026' },
   { deg: 'MS · Information Technology',   school: 'University of the Cumberlands · USA', year: '2022–2024' },
@@ -10,7 +9,11 @@ const degrees = [
 
 <section id="about" class="section">
   <div class="wrap">
-    <h2>About</h2>
+    <div class="sec-head" data-reveal>
+      <span class="sec-tag">01</span>
+      <h2 class="sec-title" data-splitting>About</h2>
+      <div class="sec-divider"></div>
+    </div>
     
     <div class="about-content">
       <p>I moved to the United States to fund my own education. Dual master's degrees in Information Technology and Artificial Intelligence, paid entirely through work and freelance roles. No financial safety net.</p>
@@ -40,17 +43,38 @@ const degrees = [
 </section>
 
 <style>
-#about { 
+.section {
   padding: 6rem 2rem;
   border-top: 1px solid var(--rule);
 }
 
-#about h2 {
+.sec-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.sec-tag {
+  font-family: var(--ff-m);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.1em;
+}
+
+.sec-title {
   font-family: var(--ff-d);
   font-size: 2.8rem;
   font-weight: 800;
-  margin-bottom: 3rem;
   color: var(--text);
+  margin: 0;
+}
+
+.sec-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--bline), transparent);
 }
 
 .about-content {
@@ -121,11 +145,21 @@ const degrees = [
 }
 
 @media (max-width: 768px) {
-  #about {
+  .section {
     padding: 4rem 1.5rem;
   }
   
-  #about h2 {
+  .sec-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .sec-divider {
+    width: 60px;
+  }
+  
+  .sec-title {
     font-size: 2rem;
   }
 }
