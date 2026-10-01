@@ -254,4 +254,16 @@ section { position: relative; z-index: 1; }
   .section {
     padding: 3rem 1.5rem;
   }
+}/* ── GLOW EFFECTS ── */
+.glass-card:hover,
+.glass-card:focus-within {
+  border-color: rgba(0, 217, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.4), inset 0 0 20px rgba(0, 217, 255, 0.1);
+}
+
+.degree:hover,
+.skill-category:hover,
+.cc:hover {
+  border-color: rgba(0, 217, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.4), inset 0 0 20px rgba(0, 217, 255, 0.1);
 }
