@@ -1,53 +1,32 @@
----
-// src/components/About.astro
-// Edit bio text and degrees here
-const degrees = [
-  { deg: 'MS · Artificial Intelligence',  school: 'University of the Cumberlands · USA', year: '2024–2026' },
-  { deg: 'MS · Information Technology',   school: 'University of the Cumberlands · USA', year: '2022–2024' },
-  { deg: 'BE · Civil Engineering',   school: 'Osmania University · India', year: '2017–2021' },
-];
----
-
 <section id="about">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="sec-tag">01</span>
-      <h2 class="sec-title" data-splitting>About</h2>
-      <div class="sec-divider"></div>
+  <h2>About</h2>
+  
+  <p>I moved to the United States to fund my own education. Dual master's degrees in Information Technology and Artificial Intelligence, paid entirely through work and freelance roles. No financial safety net.</p>
+  
+  <blockquote>
+    "I build and maintain cloud infrastructure that works in production."
+  </blockquote>
+  
+  <p>I provision AWS infrastructure with Terraform. I orchestrate containers with Kubernetes. I automate deployments with CI/CD pipelines. I manage and monitor Linux servers in production environments.</p>
+  
+  <p>I learn fast and work hard. I'm honest about what I know and what I don't. I'm looking for Cloud Infrastructure, DevOps, or Systems Administration roles where I can build reliable systems and grow as an engineer. Open to relocate immediately.</p>
+
+  <h3>Education</h3>
+  <div class="degrees">
+    <div class="degree">
+      <div class="degree-title">MS · Artificial Intelligence</div>
+      <div class="degree-school">University of the Cumberlands · USA</div>
+      <div class="degree-year">2024–2026</div>
     </div>
-    <div class="about-text" data-reveal="left">
-      <p>I moved to the <strong>United States</strong> to pursue a dual master's path in <strong>Information Technology</strong> and <strong>Artificial Intelligence</strong>, funding my own education entirely through freelance work, system administration, and operations roles. No safety net — just the work.</p>
-      <blockquote class="pull">I bridge the gap between modern AI solutions and robust IT operations.</blockquote>
-      <p>I am now targeting <strong>Cloud, Junior DevOps, and AI roles in Australia</strong> — a region making the most ambitious bets on technology infrastructure in the world. Strong academic foundation combined with the practical mindset of someone who has always had to make things work.</p>
-      <div class="edu-list">
-        {degrees.map(d => (
-          <div class="edu-item">
-            <div class="edu-deg">{d.deg}</div>
-            <div class="edu-info">{d.school} <span>{d.year}</span></div>
-          </div>
-        ))}
-      </div>
+    <div class="degree">
+      <div class="degree-title">MS · Information Technology</div>
+      <div class="degree-school">University of the Cumberlands · USA</div>
+      <div class="degree-year">2022–2024</div>
+    </div>
+    <div class="degree">
+      <div class="degree-title">BE · Civil Engineering</div>
+      <div class="degree-school">Osmania University · India</div>
+      <div class="degree-year">2017–2021</div>
     </div>
   </div>
 </section>
-
-<style>
-#about { background: var(--bg1); border-top: 1px solid var(--rule); }
-.about-text p  { font-size: 1.05rem; color: var(--mid); line-height: 1.95; margin-bottom: 1.4rem; }
-.about-text strong { color: var(--text); font-weight: 500; }
-.pull {
-  margin: 2.2rem 0; padding: 1.6rem 1.6rem 1.6rem 2rem;
-  background: var(--dim); border-left: 2px solid var(--blue);
-  font-size: 1.05rem; color: var(--text); font-style: italic; line-height: 1.65;
-}
-.edu-list { margin-top: 2.2rem; display: flex; flex-direction: column; gap: .55rem; }
-.edu-item {
-  padding: 1.2rem 1.6rem; background: var(--bg2);
-  border: 1px solid var(--rule); border-left: 2px solid var(--bline);
-  transition: border-left-color .25s, transform .3s var(--ease);
-}
-.edu-item:hover { border-left-color: var(--blue); transform: translateX(6px); }
-.edu-deg  { font-family: var(--ff-d); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .3rem; }
-.edu-info { font-family: var(--ff-m); font-size: .68rem; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .3rem; }
-.edu-info span { color: var(--blue); }
-</style>
