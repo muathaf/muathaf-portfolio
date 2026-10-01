@@ -1,32 +1,132 @@
-<section id="about">
-  <h2>About</h2>
-  
-  <p>I moved to the United States to fund my own education. Dual master's degrees in Information Technology and Artificial Intelligence, paid entirely through work and freelance roles. No financial safety net.</p>
-  
-  <blockquote>
-    "I build and maintain cloud infrastructure that works in production."
-  </blockquote>
-  
-  <p>I provision AWS infrastructure with Terraform. I orchestrate containers with Kubernetes. I automate deployments with CI/CD pipelines. I manage and monitor Linux servers in production environments.</p>
-  
-  <p>I learn fast and work hard. I'm honest about what I know and what I don't. I'm looking for Cloud Infrastructure, DevOps, or Systems Administration roles where I can build reliable systems and grow as an engineer. Open to relocate immediately.</p>
+---
+// src/components/About.astro
+// About section with education
+const degrees = [
+  { deg: 'MS · Artificial Intelligence',  school: 'University of the Cumberlands · USA', year: '2024–2026' },
+  { deg: 'MS · Information Technology',   school: 'University of the Cumberlands · USA', year: '2022–2024' },
+  { deg: 'BE · Civil Engineering',         school: 'Osmania University · India',          year: '2017–2021' },
+];
+---
 
-  <h3>Education</h3>
-  <div class="degrees">
-    <div class="degree">
-      <div class="degree-title">MS · Artificial Intelligence</div>
-      <div class="degree-school">University of the Cumberlands · USA</div>
-      <div class="degree-year">2024–2026</div>
+<section id="about" class="section">
+  <div class="wrap">
+    <h2>About</h2>
+    
+    <div class="about-content">
+      <p>I moved to the United States to fund my own education. Dual master's degrees in Information Technology and Artificial Intelligence, paid entirely through work and freelance roles. No financial safety net.</p>
+      
+      <blockquote>
+        <p>"I build and maintain cloud infrastructure that works in production."</p>
+      </blockquote>
+      
+      <p>I provision AWS infrastructure with Terraform. I orchestrate containers with Kubernetes. I automate deployments with CI/CD pipelines. I manage and monitor Linux servers in production environments.</p>
+      
+      <p>I learn fast and work hard. I'm honest about what I know and what I don't. I'm looking for Cloud Infrastructure, DevOps, or Systems Administration roles where I can build reliable systems and grow as an engineer. Open to relocate immediately.</p>
     </div>
-    <div class="degree">
-      <div class="degree-title">MS · Information Technology</div>
-      <div class="degree-school">University of the Cumberlands · USA</div>
-      <div class="degree-year">2022–2024</div>
-    </div>
-    <div class="degree">
-      <div class="degree-title">BE · Civil Engineering</div>
-      <div class="degree-school">Osmania University · India</div>
-      <div class="degree-year">2017–2021</div>
+
+    <div class="education">
+      <h3>Education</h3>
+      <div class="degrees-list">
+        {degrees.map(d => (
+          <div class="degree">
+            <div class="degree-title">{d.deg}</div>
+            <div class="degree-school">{d.school}</div>
+            <div class="degree-year">{d.year}</div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+#about { 
+  padding: 6rem 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+#about h2 {
+  font-family: var(--ff-d);
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  color: var(--text);
+}
+
+.about-content {
+  max-width: 720px;
+  margin-bottom: 4rem;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.about-content blockquote {
+  border-left: 3px solid var(--blue);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--mid);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.education {
+  margin-top: 3rem;
+}
+
+.education h3 {
+  font-family: var(--ff-d);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text);
+}
+
+.degrees-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.degree {
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.02);
+}
+
+.degree-title {
+  font-family: var(--ff-m);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 0.5rem;
+}
+
+.degree-school {
+  font-size: 0.95rem;
+  color: var(--mid);
+  margin-bottom: 0.3rem;
+}
+
+.degree-year {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-family: var(--ff-m);
+}
+
+@media (max-width: 768px) {
+  #about {
+    padding: 4rem 1.5rem;
+  }
+  
+  #about h2 {
+    font-size: 2rem;
+  }
+}
+</style>
